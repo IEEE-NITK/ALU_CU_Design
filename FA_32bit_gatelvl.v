@@ -1,5 +1,5 @@
 //design
-module FA_1bit (input A, B, Cin, output reg Sum, Cout);															//1 bit Full Adder
+module FA_1bit (input A, B, Cin, output reg Sum, Cout);					//1 bit Full Adder
   always @ (A or B or Cin)
     begin										//blocking assignment of values
       Sum = A ^ B ^ Cin;
@@ -9,15 +9,15 @@ endmodule
 
 
 module FA_32bit (input [31:0] A, B, input Cin, 
-								 output wire [31:0] Sum, output wire Cout, output reg Z, N);				//32 bit Full Adder
+		output wire [31:0] Sum, output wire Cout, output reg Z, N);				//32 bit Full Adder
 	
   wire [30:0] t; 
   genvar i;
   
-	FA_1bit G1 (A[0], B[0], Cin, Sum[0],t[0]);							//instantiating FA for 1st bit
- 	generate for (i = 1; i < 31; i = i + 1)
+  FA_1bit G1 (A[0], B[0], Cin, Sum[0],t[0]);						//instantiating FA for 1st bit
+  generate for (i = 1; i < 31; i = i + 1)
       begin: lbl
-				FA_1bit XG (A[i], B[i], t[i-1], Sum[i], t[i]);		//instantiating FA for next 30 bits
+	FA_1bit XG (A[i], B[i], t[i-1], Sum[i], t[i]);		                        //instantiating FA for next 30 bits
       end
   endgenerate
  	FA_1bit G2 (A[31], B[31], t[30], Sum[31], Cout);				//instantiating FA for last bit

@@ -1,5 +1,5 @@
 //design
-module FA_32bit (input [31:0] A, B, 
+module Equality (input [31:0] A, B, 
                  output reg Equal, Z, N);
   
   always @ (A or B)
@@ -13,11 +13,11 @@ endmodule
 
 
 //testbench
-module FA_32bit_test;
+module Equality_test;
   reg [31:0] A, B;
   wire Equal, Z, N;
   
-  FA_32bit FA(A, B, Equal, Z, N);
+  Equality myEquality(A, B, Equal, Z, N);
   
   initial
     begin

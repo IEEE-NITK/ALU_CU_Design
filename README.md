@@ -4,3 +4,6 @@ To obtain a detailed understanding of digital systems and basics of an Instructi
 ### Current Progress
 - 32 bit Full adder completed
 - 32 bit Full subtractor completed
+- Left Shift completed
+- Right Shift completed
+- Arthmetic Right shift completed

@@ -8,7 +8,7 @@ module ALU(
   
   always @(a or b or opCode)
     begin
-      case(opCode)
+      casex(opCode)
         
         6'b01xxxx:
           begin

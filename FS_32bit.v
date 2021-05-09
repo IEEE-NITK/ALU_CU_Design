@@ -29,13 +29,13 @@ endmodule
 
 
 //testbench
-module FA_32bit_test;
+module FS_32bit_test;
   reg [31:0] A, B;
   reg Bin;
   wire [31:0] Diff;
   wire Bout, Z, N;
   
-  FS_32bit FA(A, B, Bin, Diff[31:0], Bout, Z, N);
+  FS_32bit FS(A, B, Bin, Diff[31:0], Bout, Z, N);
   
   initial
     begin

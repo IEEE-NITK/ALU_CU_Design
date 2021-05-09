@@ -78,4 +78,5 @@ module ALU(
           end
       endcase
     end
+  end
 endmodule

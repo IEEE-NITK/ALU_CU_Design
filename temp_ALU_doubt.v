@@ -1,4 +1,3 @@
-//design
 module ALU(
   input[31:0] a, b,
   input[5:0] opCode,
@@ -10,12 +9,14 @@ module ALU(
   always @(a or b or opCode)
     begin
       casex(opCode)
-        6'b01xxxx:          //rest 4 bits are dont cares for arithmetic
+        
+        6'b01xxxx:
           begin
-            case(opCode)    //now we check which arithmetic operation they chose
+            case(opCode)
+              
               6'b010000:
                 begin
-                  FA_32bit myFA(    //instantiating FA_32bit
+                  FA_32bit myFA(
                   	.A(a),
                   	.B(b),
                   	.Cin(cOptional),
@@ -25,9 +26,10 @@ module ALU(
                   	.N(n)
                   )
                 end
+              
               6'b010001:
                 begin
-                  FS_32bit myFS(    //instantiating FS_32bit
+                  FS_32bit myFS(
                     .A(a),
                     .B(b),
                     .Bin(cOptional),
@@ -37,13 +39,18 @@ module ALU(
                     .N(n)
                   )
                 end
+              
+              //for anymore future arithmetic operations
+            endcase
           end
-        6'b10xxxx:            //rest 4 bits are dont cares for relational
+        
+        6'b10xxxx:
           begin
-            case(opCode)      //now we check which relational operation they chose
+            case(opCode)
+              
               6'b100000:
                 begin
-                  Equality myEquality(    //instantiating Equality
+                  Equality myEquality(
                   	.A(a),
                   	.B(b),
                   	.Cin(cOptional),
@@ -53,7 +60,22 @@ module ALU(
                   	.N(n)
                   )
                 end
+              
+              //rishee's remaining 3 relational operations
+              
+              //for anymore future relational operations
+            endcase
           end
+        
+        6'b11xxxx:
+          begin
+            case(opCode)
+              
+              //harsh's shift operations
+              
+              //for anymore future shift operations
+            endcase
+          end
+      endcase
     end
-  
 endmodule

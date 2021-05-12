@@ -1,20 +1,17 @@
-
+// design
 module rel_not_equal (input[31:0] a,b, output reg not_equal , z ,n);
    always @ (a,b)
     begin
        not_equal=(a!=b)?1:0;
-        
-      n = 0;
-      z = !not_equal;
-     
-     
+       
+       n = 0;
+       z = !not_equal;
     end
- 
 endmodule
 
 // test bench
 
-module Equality_test;
+module Inequality_test;
   reg [31:0]a, b;
   wire not_equal, z, n;
   

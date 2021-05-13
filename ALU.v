@@ -41,6 +41,39 @@ module E_32bit (input [31:0] A, B,
 
 endmodule
 
+//Relational Inequality
+module NE_32bit (input[31:0] a,b, 
+                      output reg not_equal);
+  
+  always @ (a,b)
+   begin
+     not_equal = (a != b) ? 1 : 0;
+   end
+
+endmodule
+
+//Relational Less than or Equal to
+module LE_32 (input[31:0] a,b,
+                          output reg less_than_equal_to);
+  
+  always @ (a,b)
+    begin
+      less_than_equal_to = (a <= b) ? 1 : 0;
+    end
+ 
+endmodule
+
+//Relational Greater than
+module GT_32bit (input[31:0] a,b,
+                         output reg greater_than);
+  
+  always @(a,b)
+    begin
+      greater_than = (a > b) ? 1 : 0;
+    end
+
+endmodule
+
 //Logical Left Shift
 module LLS_32bit(input [31:0] A, C,
                  output reg [31:0] B);
@@ -76,7 +109,6 @@ endmodule
 
 
 /*==================================ALU==========================================*/
-
 module ALU(
   input[31:0] a, b,
   input[5:0] opCode,
@@ -117,7 +149,29 @@ module ALU(
           )
         end
         
-        //6'b100001 -> 6'b100011 for != <= > will be added soon
+        6'b100001:begin
+          myNE NE_32bit(
+            .a(a),
+            .b(b),
+            .not_equal(ans1)
+          )
+        end
+        
+        6'b100010:begin
+          myLE LE_32bit(
+            .a(a),
+            .b(b),
+            .less_than_equal_to(ans1)
+          )
+        end
+        
+        6'b100011:begin
+          myGT GT_32bit(
+            .a(a),
+            .b(b),
+            .greater_than(ans1)
+          )
+        end
         
         6'b110000:begin
           myLLS LLS_32bit(

@@ -23,17 +23,17 @@ module rel_less_equal_to_test;
   initial
     begin
       $monitor("    a         b     | less_than_equal_to  z  n");
-      #5 a = 32'd00000001; b= 32'd00000001;											//2 positive equal
+      #5 a = 32'd00000001; b= 32'd00000001;											//2 positive numbers which are equal
       $monitor("%d  %d  |   %d    %d  %d", a, b, less_than_equal_to, z, n);
-      #5 a= 32'd00000010; b = 32'd00000001;											//2 positive a > b
+      #5 a= 32'd00000010; b = 32'd00000001;											//2 positive numbers where  a > b
       $monitor("%d  %d  |   %d    %d  %d", a, b, less_than_equal_to, z, n);
-      #5 a= 32'd00000001; b = 32'd00000010;											//2 positive a < b
+      #5 a= 32'd00000001; b = 32'd00000010;											//2 positive numbers where a < b
       $monitor("%d  %d  |   %d    %d  %d", a, b, less_than_equal_to, z, n);
-      #5 a= -32'd00000001;b = -32'd00000001;										//2 negative equal
+      #5 a= -32'd00000001;b = -32'd00000001;										//2 negative numbers which are equal
       $monitor("%d  %d  |   %d    %d  %d",a, b, less_than_equal_to, z, n);
-      #5 a =-32'd00000001; b = -32'd00000010;										//2 negative a > b
+      #5 a =-32'd00000001; b = -32'd00000010;										//2 negative where a > b
       $monitor("%d  %d  |   %d    %d  %d",a, b, less_than_equal_to, z, n);
-      #5 a =-32'd000000010;b = -32'd00000001;										//2 negative a < b
+      #5 a =-32'd000000010;b = -32'd00000001;										//2 negative where a < b
       $monitor("%d  %d  |   %d    %d  %d", a, b, less_than_equal_to, z, n);
     end
 endmodule

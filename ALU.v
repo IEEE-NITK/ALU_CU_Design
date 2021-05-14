@@ -128,7 +128,7 @@ module ALU(
       case(opCode)
         
         6'b010000:begin
-          myFA FA_32bit(
+          FA_32bit(
             .A(a),
             .B(b),
             .Cin(c),
@@ -138,7 +138,7 @@ module ALU(
         end
         
         6'b010001:begin
-          myFS FS_32bit(
+          FS_32bit(
             .A(a),
             .B(b),
             .Bin(c),
@@ -148,7 +148,7 @@ module ALU(
         end
         
         6'b100000:begin
-          myE E_32bit(
+          E_32bit(
             .A(a),
             .B(b),
             .Equal(ans1)
@@ -156,7 +156,7 @@ module ALU(
         end
         
         6'b100001:begin
-          myNE NE_32bit(
+          NE_32bit(
             .a(a),
             .b(b),
             .not_equal(ans1)
@@ -164,7 +164,7 @@ module ALU(
         end
         
         6'b100010:begin
-          myLE LE_32bit(
+          LE_32bit(
             .a(a),
             .b(b),
             .less_than_equal_to(ans1)
@@ -172,7 +172,7 @@ module ALU(
         end
         
         6'b100011:begin
-          myGT GT_32bit(
+          GT_32bit(
             .a(a),
             .b(b),
             .greater_than(ans1)
@@ -180,7 +180,7 @@ module ALU(
         end
         
         6'b110000:begin
-          myLLS LLS_32bit(
+          LLS_32bit(
             .A(a),
             .C(b),
             .B(ans1)
@@ -188,7 +188,7 @@ module ALU(
         end
         
         6'b110001:begin
-          myLRS LLS_32bit(
+          LLS_32bit(
             .A(a),
             .C(b),
             .B(ans1)
@@ -196,7 +196,7 @@ module ALU(
         end
         
         6'b110010:begin
-          myARS LLS_32bit(
+          LLS_32bit(
             .A(a),
             .C(b),
             .B(ans1)
@@ -208,16 +208,16 @@ module ALU(
       /*----------setting N and Z flags-----------*/
       if (ans1 == 32'h00000000)
         begin
-          Z = 1;
-          N = 0;
+          z = 1;
+          n = 0;
         end
       else
         begin
-          Z = 0;
+          z = 0;
           if (ans1[31] == 1'b0)
-            N = 0;
+            n = 0;
           else
-            N = 1;
+            n = 1;
         end
       /*------------------------------------------*/
       

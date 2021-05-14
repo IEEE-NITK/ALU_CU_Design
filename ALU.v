@@ -53,7 +53,7 @@ module NE_32bit (input[31:0] a,b,
 endmodule
 
 //Relational Less than or Equal to
-module LE_32 (input[31:0] a,b,
+module LE_32bit (input[31:0] a,b,
                           output reg less_than_equal_to);
   
   always @ (a,b)

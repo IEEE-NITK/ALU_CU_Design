@@ -21,8 +21,11 @@
 
 
 module ALU_TEST();
-reg a,b,opCode,c;
-wire ans1,ans2,Z,N;
+reg [31:0] a,b;
+reg [5:0]opCode;
+reg c;
+wire [31:0] ans1;
+wire ans2,Z,N;
 ALU Alu(a, b, opCode,c, ans1, ans2, Z, N);
   FA_32bit FA ( a,b, c,ans1,ans2);
   FS_32bit FS(a,b, c,ans1,ans2);

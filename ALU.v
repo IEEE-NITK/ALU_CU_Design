@@ -114,7 +114,7 @@ module ALU(
   input[5:0] opCode,
   output reg[31:0] ans1,
   output reg ans2, z, n
-)
+);
   
   reg c;
   
@@ -134,7 +134,7 @@ module ALU(
             .Cin(c),
             .Sum(ans1),
             .Cout(ans2)
-          )
+          );
         end
         
         6'b010001:begin
@@ -144,7 +144,7 @@ module ALU(
             .Bin(c),
             .Diff(ans1),
             .Bout(ans2)
-          )
+          );
         end
         
         6'b100000:begin
@@ -152,7 +152,7 @@ module ALU(
             .A(a),
             .B(b),
             .Equal(ans1)
-          )
+          );
         end
         
         6'b100001:begin
@@ -160,7 +160,7 @@ module ALU(
             .a(a),
             .b(b),
             .not_equal(ans1)
-          )
+          );
         end
         
         6'b100010:begin
@@ -168,7 +168,7 @@ module ALU(
             .a(a),
             .b(b),
             .less_than_equal_to(ans1)
-          )
+          );
         end
         
         6'b100011:begin
@@ -176,7 +176,7 @@ module ALU(
             .a(a),
             .b(b),
             .greater_than(ans1)
-          )
+          );
         end
         
         6'b110000:begin
@@ -184,23 +184,23 @@ module ALU(
             .A(a),
             .C(b),
             .B(ans1)
-          )
+          );
         end
         
         6'b110001:begin
-          LLS_32bit(
+          LRS_32bit(
             .A(a),
             .C(b),
             .B(ans1)
-          )
+          );
         end
         
         6'b110010:begin
-          LLS_32bit(
+          ARS_32bit(
             .A(a),
             .C(b),
             .B(ans1)
-          )
+          );
         end
         
       endcase

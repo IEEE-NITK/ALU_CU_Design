@@ -7,3 +7,7 @@ To obtain a detailed understanding of digital systems and basics of an Instructi
 - Left Shift completed
 - Right Shift completed
 - Arthmetic Right shift completed
+- Relational Operators completed
+
+### Final Stage of Project
+- Completed ALU design

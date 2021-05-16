@@ -1,3 +1,4 @@
+
 `timescale 1ns / 1ps
 
 // Code your design here
@@ -7,7 +8,7 @@ module ALU(
   output reg[31:0] ans1,
   output reg ans2, Z, N
 );
-  
+       reg [32:0] t;
   reg c;
   
   always @ (ans2)
@@ -20,14 +21,14 @@ module ALU(
       case(opCode)
         
         6'b010000:begin
-          reg [32:0] t;
+     
           t = a + b + c;
           ans2 = t[32];
           ans1 = t[31:0];
         end
         
         6'b010001:begin
-          reg [32:0] t;
+        
           t = a - b - c;
           ans1 = t[31:0];
           if (b > a || c > (a - b))

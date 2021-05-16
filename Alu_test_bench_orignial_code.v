@@ -19,27 +19,100 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
+// testbench
 module ALU_TEST();
-reg [31:0] a,b;
-reg [5:0]opCode;
-reg c;
-wire [31:0] ans1;
-wire ans2,Z,N;
-ALU Alu(a, b, opCode, ans1, ans2, Z, N);
-  FA_32bit FA ( a,b, c,ans1,ans2);
-  FS_32bit FS(a,b, c,ans1,ans2);
-  E_32bit E(a,b,ans1 );
-  NE_32bit NE( a,b,ans1 );
- LE_32bit LE( a,b,ans1  );
- GT_32bit GT( a,b,ans1 );
- LLS_32bit LLS(a,b,ans1);
-  LRS_32bit LRS(a,b,ans1);
-   ARS_32bit ARS(a,b,ans1);
-initial
-begin
-$monitor(" opCode    a      b     ans1     ans2      Z     N   ");
-#(2) assign  opCode=6'b110001 ; a=32'h00010000 ; b=32'h00000001;
-
-end
+  reg [31:0] A, B;
+  reg [5:0] opCode;
+  
+  wire [31:0] ans1;
+  wire ans2, Z, N;
+  
+  ALU Alu(A, B, opCode, ans1, ans2, Z, N);
+  
+  initial
+    begin
+      
+      $monitor("\n\n=========Full Adder==========");
+      $monitor("opCode    A      B     ans1     ans2      Z     N");
+      #5 opCode = 6'b010000 ; a=32'h00000001 ; b=32'h00000001;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      #5 opCode = 6'b010000 ; a=-32'hffffffff ; b=32'h00000001;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      #5 opCode = 6'b010000 ; a=32'hffffffff ; b=32'hfffffffe;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      
+      $monitor("\n\n=========Full Subtractor==========");
+      $monitor("opCode    A      B     ans1     ans2      Z     N");
+      #5 opCode = 6'b010001 ; a=32'h00000001 ; b=32'h00000001;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      #5 opCode = 6'b010001 ; a=-32'hffffffff ; b=32'h00000001;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      #5 opCode = 6'b010001 ; a=32'hffffffff ; b=32'hfffffffe;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      
+      $monitor("\n\n=========Equality==========");
+      $monitor("opCode    A      B     ans1     ans2      Z     N");
+      #5 opCode = 6'b100000 ; a=32'h00000001 ; b=32'h00000001;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      #5 opCode = 6'b100000 ; a=-32'hffffffff ; b=32'hfffffffe;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      #5 opCode = 6'b100000 ; a=32'hffffffff ; b=32'h00000001;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      
+      $monitor("\n\n=========InEquality==========");
+      $monitor("opCode    A      B     ans1     ans2      Z     N");
+      #5 opCode = 6'b100001 ; a=32'h00000001 ; b=32'h00000001;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      #5 opCode = 6'b100001 ; a=-32'hffffffff ; b=32'hfffffffe;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      #5 opCode = 6'b100001 ; a=32'hffffffff ; b=32'h00000001;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      
+      $monitor("\n\n=========Less Than or Equal to==========");
+      $monitor("opCode    A      B     ans1     ans2      Z     N");
+      #5 opCode = 6'b100010 ; a=32'h00000001 ; b=32'h00000002;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      #5 opCode = 6'b100010 ; a=-32'hffffffff ; b=32'hfffffffe;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      #5 opCode = 6'b100010 ; a=32'hffffffff ; b=32'h00000001;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      
+      $monitor("\n\n=========Greater Than==========");
+      $monitor("opCode    A      B     ans1     ans2      Z     N");
+      #5 opCode = 6'b100011 ; a=32'h00000001 ; b=32'h00000002;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      #5 opCode = 6'b100011 ; a=-32'hffffffff ; b=32'hfffffffe;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      #5 opCode = 6'b100011 ; a=32'hffffffff ; b=32'h00000001;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      
+      $monitor("\n\n=========Logical Left Shift==========");
+      $monitor("opCode    A      B     ans1     ans2      Z     N");
+      #5 opCode = 6'b100000 ; a=32'h00010000 ; b=32'h00000001;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      #5 opCode = 6'b100000 ; a=32'hffffffff ; b=-32'hfffffffe;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      #5 opCode = 6'b100000 ; a=32'hffffffff ; b=32'h00000001;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      
+      $monitor("\n\n=========Logical Right Shift==========");
+      $monitor("opCode    A      B     ans1     ans2      Z     N");
+      #5 opCode = 6'b100000 ; a=32'h00000001 ; b=32'h00000001;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      #5 opCode = 6'b100000 ; a=32'hffffffff ; b=-32'hfffffffe;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      #5 opCode = 6'b100000 ; a=32'hffffffff ; b=32'h00000001;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      
+      $monitor("\n\n=========Arithmetic Right Shift==========");
+      $monitor("opCode    A      B     ans1     ans2      Z     N");
+      #5 opCode = 6'b100000 ; a=32'h00000001 ; b=32'h00000001;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      #5 opCode = 6'b100000 ; a=32'hffffffff ; b=-32'hfffffffe;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      #5 opCode = 6'b100000 ; a=32'hffffffff ; b=32'h00000001;
+      $monitor("%b  %h  %h  |  %h  %d    %d  %d", opCode, A, B, ans1, ans2, Z, N);
+      
+      
+    end
 endmodule

@@ -94,11 +94,11 @@ produced the following outputs.
 
 ## References
 
-[1] https://youtube.com/playlist?list=PLBlnK6fEyqRjMH3mWf6kwqiTbT798eAOm
-[2] https://youtu.be/B7uAD11uRMc
-[3] [https://youtu.be/yHLXpg-LOg](https://www.youtube.com/watch?v=yHLXpg_-LOg)
-[4] https://youtu.be/tmgOkwX8YtA
-[5] [basics of digital electronics](https://www.youtube.com/playlist?list=PLWPirh4EWFpHk70zwYoHu87uVsCC8E2S-)
-[6] [Basic of sequential circuits](https://www.youtube.com/playlist?list=PLmjEXDyU3L-mSz3eG4_JwVZt2fSon3tQX)
-[7] [Basics of Verilog](https://www.youtube.com/playlist?list=PLUtfVcb-iqn8ff92DJ0SZqwsX4W1s_oab)
+- [1] https://youtube.com/playlist?list=PLBlnK6fEyqRjMH3mWf6kwqiTbT798eAOm
+- [2] https://youtu.be/B7uAD11uRMc
+- [3] [https://youtu.be/yHLXpg-LOg](https://www.youtube.com/watch?v=yHLXpg_-LOg)
+- [4] https://youtu.be/tmgOkwX8YtA
+- [5] [basics of digital electronics](https://www.youtube.com/playlist?list=PLWPirh4EWFpHk70zwYoHu87uVsCC8E2S-)
+- [6] [Basic of sequential circuits](https://www.youtube.com/playlist?list=PLmjEXDyU3L-mSz3eG4_JwVZt2fSon3tQX)
+- [7] [Basics of Verilog](https://www.youtube.com/playlist?list=PLUtfVcb-iqn8ff92DJ0SZqwsX4W1s_oab)
 
